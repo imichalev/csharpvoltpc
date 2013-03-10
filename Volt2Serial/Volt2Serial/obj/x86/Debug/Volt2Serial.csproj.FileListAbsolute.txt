@@ -1,0 +1,18 @@
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\bin\Debug\Volt2Serial.exe
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\bin\Debug\Volt2Serial.pdb
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\Volt2Serial.Form1.resources
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\Volt2Serial.Properties.Resources.resources
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\Volt2Serial.exe
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\Volt2Serial\obj\x86\Debug\Volt2Serial.pdb
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\Volt2Serial.exe
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\Volt2Serial.pdb
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\bin\Debug\Volt2Serial.exe
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\bin\Debug\Volt2Serial.pdb
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\Volt2Serial.Form1.resources
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\Volt2Serial.Properties.Resources.resources
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\Administrator\Desktop\HomeWorks\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
