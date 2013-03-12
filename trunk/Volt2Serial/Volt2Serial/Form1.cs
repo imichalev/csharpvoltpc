@@ -15,10 +15,8 @@ namespace Volt2Serial
     public partial class Form1 : Form
     {
 
-        string RxBuff1;
-        string RXBuff2;
-        System.IO.StreamReader oRead1;
-        System.IO.StreamWriter oWrite;
+        
+        byte[] SpecialSymbol = new byte[1] {0x1b} ;
         /*
          [System.Runtime.InteropServices.DllImport("winmm.dll")] 
         public  timeGetTime_
@@ -42,7 +40,7 @@ namespace Volt2Serial
             {
                 DesktopPatch=ReadValue+"\\Votage.txt";
             }
-            
+            //Get Serial Port
             foreach ( string  Port   in  System.IO.Ports.SerialPort.GetPortNames())
             {
               comboBox1.Items.Add(Port);
@@ -50,7 +48,9 @@ namespace Volt2Serial
             }
              comboBox1.SelectedIndex = 0;
              PortName = comboBox1.Text;
-          
+             //Set Timer1 
+             timer1.Interval = 1000;
+             
             
            
         }
@@ -81,6 +81,13 @@ namespace Volt2Serial
         private void button3_Click(object sender, EventArgs e)
         {
 
+            if(PortName == "" || serialPort1.ReadTimeout==-1 ) 
+            {
+                MessageBox.Show ("Comm Port is not select");
+                return;
+
+            }
+
             if (serialPort1.IsOpen == true)
             {
               MessageBox.Show (String.Format("Port {0} already is open !", PortName)  );
@@ -89,9 +96,6 @@ namespace Volt2Serial
             }
 
             else 
-            {
-
-             if (PortName != "" )
             {
                 try
                 {
@@ -102,11 +106,52 @@ namespace Volt2Serial
                        MessageBox .Show ("Port is busy or missing",PortName );
                      }
                 
+                //Send SpecialSymbol to Serial and Wait for Answert
+                    serialPort1.Write(SpecialSymbol,0,1);
+                 // Try to Read Answert as Voltage 
+                      int ReadSerialChar;
+                    StringBuilder Voltage = new StringBuilder ();
+                      do
+                      {
+                          try
+                          {
+                              ReadSerialChar = serialPort1.ReadByte();
+                          }
+                          catch (TimeoutException )
+                          {
+                               MessageBox.Show (string.Format("The Device on port {0} not responding",PortName ));
+                               break;
+                          }
+                         Voltage.Append(Convert.ToString(serialPort1.ReadChar()));
+                         
+                      } while (ReadSerialChar != 0);
 
-            }
-
-            }
-            
+                      textBox1.Text = Voltage.ToString() ; 
+                  }
+              serialPort1.Close();                       
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (button4.ForeColor == Color.Green)
+            {
+                button4.ForeColor = Color.Red;
+            }
+            else
+            {
+                button4.ForeColor = Color.Green;
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+
+        }
+
+        
+
+       
     }
 }
