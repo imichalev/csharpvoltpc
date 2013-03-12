@@ -49,7 +49,7 @@ namespace Volt2Serial
              comboBox1.SelectedIndex = 0;
              PortName = comboBox1.Text;
              //Set Timer1 
-             timer1.Interval = 1000;
+             timer1.Interval = 100;
              
             
            
@@ -122,11 +122,11 @@ namespace Volt2Serial
                                MessageBox.Show (string.Format("The Device on port {0} not responding",PortName ));
                                break;
                           }
-                         Voltage.Append(Convert.ToString(serialPort1.ReadChar()));
+                         Voltage.Append(Convert.ToChar (ReadSerialChar));
                          
-                      } while (ReadSerialChar != 0);
-
-                      textBox1.Text = Voltage.ToString() ; 
+                      } while (ReadSerialChar != 0x0d);
+                      float voltage=(Convert.ToInt32(Voltage.ToString()))*5.0f/1023.0f;
+                      textBox1.Text = Convert.ToString(voltage) ; 
                   }
               serialPort1.Close();                       
         }
@@ -142,11 +142,19 @@ namespace Volt2Serial
                 button4.ForeColor = Color.Green;
             }
 
+            button3.PerformClick();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             timer1.Start();
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PortName = comboBox1.Text;
+
 
         }
 
