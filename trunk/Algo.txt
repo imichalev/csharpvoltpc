@@ -1,0 +1,8 @@
+
+
+
+      1. Init comm port 
+      2. Init timer
+      3.  Read Data From CommPort 
+      4.  On err  Display Error message and continue 
+      

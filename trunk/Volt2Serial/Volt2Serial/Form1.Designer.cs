@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -82,6 +81,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
             this.textBox1.Location = new System.Drawing.Point(154, 100);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(103, 20);
@@ -119,19 +119,11 @@
             this.textBox2.Size = new System.Drawing.Size(121, 20);
             this.textBox2.TabIndex = 9;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(154, 140);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(103, 20);
-            this.textBox3.TabIndex = 10;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 266);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label2);
@@ -160,7 +152,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
     }
 }
 
