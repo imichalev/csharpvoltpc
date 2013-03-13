@@ -16,8 +16,7 @@ namespace Volt2Serial
     public partial class Form1 : Form
     {     
         byte[] SpecialSymbol = new byte[1] {0x1b} ;
-        bool ReadCommPort ;
-        string message;
+        
         /*
          [System.Runtime.InteropServices.DllImport("winmm.dll")] 
         public  timeGetTime_
@@ -75,17 +74,13 @@ namespace Volt2Serial
 
         }
 
-    private void   ReadData ()
+    private bool  ReadData ()
        {
-           message = "";
-           ReadCommPort = false;
-           // MessageBox.Show("Comm Port is not select");
-          
+                              
             if(PortName == "" || serialPort1.ReadTimeout==-1 ) 
             {
-               // MessageBox.Show ("Comm Port is not select");
-                message = "Comm Port is not select";
-                return ;
+                MessageBox.Show ("Comm Port is not select");
+                 return false;
             }
 
             if (serialPort1.IsOpen != true)
@@ -96,35 +91,30 @@ namespace Volt2Serial
                 }
                 catch (Exception )
                 {
-                    //MessageBox.Show("Port is busy or missing");
-                    message = "Can't open port";
-                    return ;
+                   MessageBox.Show("Can't open port");
+                   return false ;
                 }
 
              }
                                           
-                //Send SpecialSymbol to Serial and Wait for Answert
-                    serialPort1.Write(SpecialSymbol,0,1);
-                 // Try to Read Answert as Voltage 
-                      int ReadSerialChar;
-                    StringBuilder Voltage = new StringBuilder ();
-                      do
+          //Send SpecialSymbol to Serial and Wait for Answert
+             serialPort1.Write(SpecialSymbol,0,1);
+         // Try to Read Answert as Voltage 
+             int ReadSerialChar;
+            StringBuilder Voltage = new StringBuilder ();
+                do
+                  {
+                    try
                       {
-                          try
-                          {
-                              ReadSerialChar = serialPort1.ReadByte();
-                          }
-                          catch (TimeoutException ex )
-                          {
-                            serialPort1.Close();
-                          // DialogResult result= MessageBox.Show (string.Format("The Device on port {0} not responding",PortName ),"Ehoo",MessageBoxButtons.OK);
-                            message = string.Format("The Device on port {0} not responding", PortName);
-                            return ;
-                           }
-
-                         
-                          
-
+                      ReadSerialChar = serialPort1.ReadByte();
+                       }
+                 catch (TimeoutException )
+                     {                              
+                       MessageBox.Show (string.Format("The Device on port {0} not responding", PortName));
+                        serialPort1.Close();
+                         return false ;
+                      }
+                                               
                          Voltage.Append(Convert.ToChar (ReadSerialChar));
                          
                       } while (ReadSerialChar != 0x0d);
@@ -134,7 +124,7 @@ namespace Volt2Serial
                           textBox1.Text = Convert.ToString(voltage);
                       }
                  serialPort1.Close();
-                 ReadCommPort = true;
+                 return  true;
            }
 
 
@@ -144,33 +134,31 @@ namespace Volt2Serial
         } 
 
         private void timer1_Tick(object sender, EventArgs e)
-        {    
-            if (button4.ForeColor == Color.Green)
+        {
+            timer1.Stop();
+
+            if (textBox1.BackColor  == Color.Green)
             {
-                button4.ForeColor = Color.Red;
+                textBox1.BackColor = Color.Red;
             }
             else
             {
-                button4.ForeColor = Color.Green;
+                textBox1.BackColor = Color.Green;
             }
+           
             //ReadCommPort = true;
-            ReadData();
-            if (ReadCommPort == false)
+           
+           
+            if (ReadData()!=false )
             {
-                textBox3.Text = message;
-                timer1.Stop();
+                timer1.Start(); 
             }
-            else
-            {
-                textBox3.Text = "";
-            }
-            
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-
+             timer1.Start();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,16 +168,6 @@ namespace Volt2Serial
             if (PortName != "") serialPort1.PortName = PortName;           
         }
 
-      public class Mycode 
-      {
-
-
-
-
-
-
-      }
-
-       
+           
     }
 }
