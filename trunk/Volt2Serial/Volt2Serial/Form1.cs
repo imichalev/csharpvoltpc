@@ -25,10 +25,26 @@ namespace Volt2Serial
         string ReadValue = (string)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Desktop", null );
         string DesktopPatch;
         string PortName;
+        public float volt = 0;
 
         public Form1()
         {
             InitializeComponent();
+
+            //chart1.Titles.Add("Volt");
+           // this.chart1.ChartAreas.Add("Time");
+           // this.chart1.ChartAreas.Add("Volt");
+           // chart1.ChartAreas["Time"].AxisX.Minimum = 0;
+           // chart1.ChartAreas["Time"].AxisX.Maximum = 100;
+           // chart1.ChartAreas["Time"].AxisX.Interval = 1;
+           // chart1.ChartAreas["Time"].AxisX.MajorGrid.LineColor = Color.White;
+            //chart1.ChartAreas["Time"].AxisX.MajorGrid.LineDashStyle=Sys
+
+            chart1.Series.Add("Volt");
+          
+            chart1.ChartAreas["Volt"].AxisY.Minimum = 0;
+            chart1.ChartAreas["Volt"].AxisY.Maximum = 10;
+            chart1.ChartAreas["Volt"].AxisY.Interval = 1;
 
             //Get Desktop Patch
             if (ReadValue == null)
@@ -120,9 +136,13 @@ namespace Volt2Serial
                       } while (ReadSerialChar != 0x0d);
                       if (Voltage.Length != 0)
                       {
-                          float voltage = (Convert.ToInt32(Voltage.ToString())) * 5.0f / 1024.0f;
-                          textBox1.Text = Convert.ToString(voltage);
+                          //float voltage = (Convert.ToInt32(Voltage.ToString())) * 5.0f / 1024.0f;
+                          Voltage.Remove(Voltage.Length - 1, 1);
+                          textBox1.Text = Voltage.ToString ();
+                           volt=Convert.ToSingle (Voltage.ToString ());
                       }
+
+
                  serialPort1.Close();
                  return  true;
            }
@@ -153,7 +173,11 @@ namespace Volt2Serial
             {
                 timer1.Start(); 
             }
-           
+            
+
+            chart1.Series["Volt"].Points.AddXY(1, volt);
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -167,6 +191,8 @@ namespace Volt2Serial
             textBox2.Text = PortName;
             if (PortName != "") serialPort1.PortName = PortName;           
         }
+
+        
 
            
     }
