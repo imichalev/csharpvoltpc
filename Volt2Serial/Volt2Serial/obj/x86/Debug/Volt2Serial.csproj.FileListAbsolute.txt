@@ -34,3 +34,6 @@ C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Se
 C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\obj\x86\Debug\Volt2Serial.Properties.Resources.resources
 C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
 C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\bin\Debug\Volt2Serial.exe.config
+C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrator\Desktop\csharpvoltpc\Volt2Serial\Volt2Serial\obj\x86\Debug\GenerateResource.write.1.tlog
