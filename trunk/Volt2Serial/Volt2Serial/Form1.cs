@@ -67,8 +67,11 @@ namespace Volt2Serial
            
            // chart1.ChartAreas["Volt1"].AxisX.LabelStyle.Format = "dd MMM\nHH:mm";
             chart1.ChartAreas["Volt1"].AxisX.Title = "Time";
+            chart1.ChartAreas["Volt1"].AxisX.Minimum = 0;
+            chart1.ChartAreas["Volt1"].AxisX.Maximum = 60;
 
-
+            chart1.ChartAreas["Volt1"].AxisY.Minimum = 0;
+            chart1.ChartAreas["Volt1"].AxisY.Maximum = 0.1;
            // chart1.ChartAreas["Volt1"].AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             //chart1.ChartAreas["Volt1"].AxisY2.MajorGrid.Enabled = false;
             //chart1.ChartAreas["Volt1"].AxisY.MajorGrid.Enabled = false;
@@ -173,10 +176,10 @@ namespace Volt2Serial
                                chart1.Series["Volt"].Points.AddY(volt);
                            }
 
-                           if (chart1.Series["Volt"].Points.Count > 60)
-                           {
-                               chart1.Series["Volt"].Points.Clear();
-                           }
+                          // if (chart1.Series["Volt"].Points.Count > 10)
+                         //  {
+                          //     chart1.Series["Volt"].Points.RemoveAt(10);
+                          // }
 
                       }
 
