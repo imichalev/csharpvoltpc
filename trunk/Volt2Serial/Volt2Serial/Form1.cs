@@ -101,8 +101,11 @@ namespace Volt2Serial
 
             }
               //Set Comm Port
-             comboBox1.SelectedIndex = 0;
-             PortName = comboBox1.Text;
+            if (comboBox1.SelectedIndex > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+                PortName = comboBox1.Text;
+            }
              serialPort1.ReadTimeout = 500;
              serialPort1.BaudRate = 9600;
              //Set Timer1 
